@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Gerenciamento de Custos e Equipe</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard de Gerenciamento de Custos e Equipe</h1>
+
+        <div class="chart-container">
+            <h2>Economia por Categoria</h2>
+            <canvas id="economiaPorCategoria"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Despesas Mensais</h2>
+            <canvas id="despesasMensais"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Aumento de Vendas</h2>
+            <canvas id="aumentoVendas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Economia por Categoria
+        var ctx1 = document.getElementById('economiaPorCategoria').getContext('2d');
+        var economiaPorCategoria = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Assinaturas de Ferramentas', 'Marketing Digital', 'Outros'],
+                datasets: [{
+                    label: 'Economia Mensal (R$)',
+                    data: [150, 100, 100],
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Despesas Mensais
+        var ctx2 = document.getElementById('despesasMensais').getContext('2d');
+        var despesasMensais = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Junho'],
+                datasets: [{
+                    label: 'Despesas Totais Antes (R$)',
+                    data: [2000],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }, {
+                    label: 'Despesas Totais Depois (R$)',
+                    data: [1650],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Aumento de Vendas
+        var ctx3 = document.getElementById('aumentoVendas').getContext('2d');
+        var aumentoVendas = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['Junho'],
+                datasets: [{
+                    label: 'Vendas Antes (R$)',
+                    data: [5000],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Vendas Depois (R$)',
+                    data: [5500],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
